@@ -1,0 +1,19 @@
+if [ "$1" = "triggered" ]; then
+	if [ -f "/usr/local/bin/spark-dstore-patch" ]; then 
+	echo '-----您安装的星火商店(>=3.0.3-7)已经自带了补丁-----'
+	echo '--------------您可以安全地卸载本补丁--------------'
+	echo '------------为防止重复触发，本补丁退出-------------'
+	exit 0
+	fi
+
+	if [ -f "/usr/bin/deepin-app-store-tool" ]; then 
+	echo '--您已经安装了deepin-app-store，无需补丁即可处理---'
+	echo '--------------您可以安全地卸载本补丁--------------'
+	echo '------------为防止重复触发，本补丁退出-------------'
+	exit 0
+	fi
+
+  echo '--------检测到Uniontech标准软件包，运行补丁以修正安装--------'
+    /opt/durapps/spark-dstore-patch/spark-dstore-patch
+  echo '-----------spark-dstore-patch补丁工具已运行完毕-----------'
+fi
