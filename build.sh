@@ -2,6 +2,28 @@
 
 echo "build.sh修改自柚柚的 https://gitee.com/deepin-opensource/one-cuter"
 
+echo "检查依赖"
+
+DEPEND=`dpkg -s qt5-default`
+if [ "$DEPEND" = "" ] ; then 
+echo "未安装依赖：qt5-defalut 本脚本退出"
+exit 0
+fi
+
+DEPEND=`dpkg -s g++`
+if [ "$DEPEND" = "" ] ; then 
+echo "未安装依赖：g++ 本脚本退出"
+exit 0
+fi
+
+DEPEND=`dpkg -s fakeroot`
+if [ "$DEPEND" = "" ] ; then 
+echo "未安装依赖：fakeroot 本脚本退出"
+exit 0
+fi
+
+
+echo "依赖检查通过，开始编译"
 VERSION="1.2.2"
 ARCH=`dpkg --print-architecture`
 cd `dirname $0`
