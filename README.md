@@ -13,4 +13,6 @@
 
 如果发现本仓库的代码落后于星火内置的版本，请提issue或者pr来帮助同步
 
-## 请在启动build.sh之前修改`pkg/DEBIAN/control`以改变版本号和对应的架构！
+启动`./build.sh`来构建
+
+安装依赖：`sudo apt install qt5-default g++ fakeroot`

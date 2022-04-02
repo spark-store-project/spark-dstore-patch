@@ -53,7 +53,7 @@ EOF
 
 find pkg/ -type f -print0 |xargs -0 md5sum > pkg/DEBIAN/md5sums
 cd pkg
-dpkg -b . ../
+fakeroot dpkg -b . ../
 cd ..
 
 rm pkg/DEBIAN/md5sums
