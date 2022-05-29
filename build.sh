@@ -4,19 +4,19 @@ echo "build.sh修改自柚柚的 https://gitee.com/deepin-opensource/one-cuter"
 
 echo "检查依赖"
 
-DEPEND=`dpkg -s qt5-default`
+DEPEND=`dpkg -l | grep   qt5-default`
 if [ "$DEPEND" = "" ] ; then 
 echo "未安装依赖：qt5-defalut 本脚本退出"
 exit 0
 fi
 
-DEPEND=`dpkg -s g++`
+DEPEND=`dpkg -l | grep   g++`
 if [ "$DEPEND" = "" ] ; then 
 echo "未安装依赖：g++ 本脚本退出"
 exit 0
 fi
 
-DEPEND=`dpkg -s fakeroot`
+DEPEND=`dpkg -l | grep   fakeroot`
 if [ "$DEPEND" = "" ] ; then 
 echo "未安装依赖：fakeroot 本脚本退出"
 exit 0
