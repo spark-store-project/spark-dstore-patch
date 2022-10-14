@@ -6,7 +6,7 @@ echo "检查依赖"
 
 DEPEND=`dpkg -l | grep   qt5-default`
 if [ "$DEPEND" = "" ] ; then 
-echo "未安装依赖：qt5-defalut 本脚本退出"
+echo "未安装依赖：qt5-default 本脚本退出"
 exit 0
 fi
 
