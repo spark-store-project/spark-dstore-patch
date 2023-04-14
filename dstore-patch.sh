@@ -46,6 +46,6 @@ for app in $(enumAppInfoList); do
     fi
 # remove broken links in /usr/share
 find /usr/share -xtype l -delete
-
+find /etc/fonts/conf.d -xtype l -delete
 done
 
