@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "----------------Running Spark DStore Patch----------------"
+#!/bin/bash
+
 
 enumAppInfoList() {
     appInfoList=()
@@ -10,7 +13,31 @@ enumAppInfoList() {
     done
     echo "${appInfoList[@]}"
 }
-LinkApp() {
+linkDir() {
+    ensureTargetDir() {
+        targetFile=$1
+        t=$(dirname "$targetFile")
+        mkdir -p "$t"
+    }
+
+    source=$1
+    target=$2
+    sourceDir=$(dirname "$source")
+    targetDir=$(dirname "$target")
+    find "$source" -type f | while read sourceFile; do
+        targetFile="$targetDir/${sourceFile#$sourceDir/}"
+        if [ -L "$targetFile" ] && [ "$(readlink "$targetFile")" = "$sourceFile" ]; then
+            continue
+        else
+            rm -f "$targetFile"
+        fi
+
+        ensureTargetDir "$targetFile"
+        ln -s "$sourceFile" "$targetFile"
+    done
+}
+
+linkApp() {
     appID=$1
     appEntriesDir="/opt/apps/$appID/entries"
     appLibsDir="/opt/apps/$appID/files/lib"
@@ -49,3 +76,5 @@ find /usr/share -xtype l -delete
 find /etc/fonts/conf.d -xtype l -delete
 done
 
+
+echo "----------------Finished----------------"
