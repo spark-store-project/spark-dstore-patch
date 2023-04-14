@@ -72,9 +72,9 @@ for app in $(enumAppInfoList); do
         echo "Linking complete for $app"
     fi
 # remove broken links in /usr/share
+
+done
 find /usr/share -xtype l -delete
 find /etc/fonts/conf.d -xtype l -delete
-done
-
 
 echo "----------------Finished----------------"
