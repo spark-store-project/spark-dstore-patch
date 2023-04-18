@@ -9,4 +9,8 @@ if [ "$1" = "triggered" ]; then
   echo '--------检测到Uniontech标准软件包，运行补丁以修正安装--------'
     /opt/durapps/spark-dstore-patch/spark-dstore-patch
   echo '-----------spark-dstore-patch补丁工具已运行完毕-----------'
+exit
 fi
+
+rm -f /usr/bin/deepin-app-store-tool
+ln -sf /opt/durapps/spark-dstore-patch/spark-dstore-patch /usr/bin/deepin-app-store-tool
