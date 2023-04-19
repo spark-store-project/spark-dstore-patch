@@ -1,9 +1,6 @@
 if [ "$1" = "triggered" ]; then
-	if [ -f "/usr/local/bin/spark-dstore-patch" ]; then 
-	exit 0
-	fi
 
-	if [ -f "/usr/bin/deepin-app-store-tool" ]; then 
+	if [ -f "/var/lib/dpkg/info/deepin-app-store.triggers" ] ; then 
 	exit 0
 	fi
   echo '--------检测到Uniontech标准软件包，运行补丁以修正安装--------'
